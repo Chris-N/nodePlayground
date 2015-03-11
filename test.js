@@ -19,6 +19,12 @@ describe('Requests to the root path', function(){
        .expect('Content-Type', /html/, done);
     });
 
+    it('Returns an index file', function(done) {
+       request(app)
+       .get('/')
+       .expect(/comments/i, done);
+    });
+
 });
 
 
