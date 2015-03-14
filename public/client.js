@@ -1,0 +1,5 @@
+$(function(){
+
+   $.get('/comments', appendToList);
+
+}())

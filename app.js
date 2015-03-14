@@ -9,13 +9,25 @@ var app = express();
 // middleware: folder of our static files
 app.use(express.static('public'));
 
-app.get('/comment', function(request, response){
-   var comment = {tite: 'first', body: 'I\m the first to comment!!!'};
-   response.json(comment);
+var comments = [
+   {title: 'One', body: 'talking all over the place'},
+   {title: 'Two', body: 'talking all over the place'},
+   {title: 'Three', body: 'talking all over the place'}
+];
+
+var commentPath = '/comments';
+
+app.get(commentPath , function(request, response){
+   response.json(comments);
 });
+app.post(commentPath , function(request, response){
+   response.sendStatus(201);
+});
+
+
+
 
 // This line will bind our app to the network
 //app.listen(3000);
-
 
 module.exports = app;

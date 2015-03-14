@@ -1,7 +1,8 @@
 var request = require('supertest');
 var app = require('./app');
-   
-describe('Requests to the root path', function(){
+
+console.log('------------------------------' + new Date());
+describe('Requests to the ROOT path', function(){
 
     it('Returns a 200 status code', function(done){
         request(app)
@@ -28,25 +29,33 @@ describe('Requests to the root path', function(){
 });
 
 
-describe('Requests to the comment path', function(){
+describe('Requests to the COMMENT path', function(){
 
    it('Returns a 200 status code', function(done){
       request(app)
-      .get('/comment')
+      .get('/comments')
       .expect(200, done);
    });
 
    it('Returns JSON format data', function(done) {
       request(app)
-      .get('/comment')
+      .get('/comments')
       .expect('Content-Type', /json/, done);
    });
 
-   it('Return a comment', function(done) {
+   it('Returns previous comments', function(done){
       request(app)
-      .get('/comment')
-      .expect(JSON.stringify({tite: 'first', body: 'I\m the first to comment!!!'}), done);
+      .get('/comments')
+      .expect('Content-Type', /json/, done);
    });
+});
 
+describe('Create COMMENTS', function(){
+
+   it('Return a 201 create status', function(done){
+      request(app)
+      .post('/comments')
+      .expect(201, done);
+   });
 });
 

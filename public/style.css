@@ -1,2 +1,72 @@
 @import "/bootstrap/css/bootstrap.css";
 
+body {
+   padding-top: 50px;
+}
+
+.starter-template {
+   padding: 40px 15px;
+   text-align: center;
+}
+
+.alert{
+   color: red;
+   text-align: center;
+   display: none;
+}
+
+/* Shared */
+
+form, .comment-list {
+   background: white;
+   margin-bottom: 20px;
+   padding: 20px;
+}
+
+/* Form */
+
+legend {
+   font-weight: bold;
+   margin: 0;
+   margin-bottom: 10px;
+   padding: 0;
+}
+input {
+   border: 0;
+   border: 1px solid #ccc;
+   box-sizing: border-box;
+   font-family: Helvetica, Arial, sans-serif;
+   font-size: 16px;
+   margin: 0;
+   margin-bottom: 10px;
+   padding: 10px;
+   width: 100%;
+}
+input:focus {
+   box-shadow: 0 0 4px rgba(249, 184, 180, 0.85);
+   outline: none;
+}
+input[type="submit"] {
+   background: #d19b99;
+   border: 0;
+   border-radius: 4px;
+   color: white;
+   font-size: 12px;
+   font-weight: bold;
+   margin-bottom: 0;
+   padding: 10px 30px;
+   text-transform: uppercase;
+   width: auto;
+}
+
+/* Block List */
+
+.comment-list li::after {
+   clear: both;
+   content: '';
+   display: table;
+}
+.comment-list li a:last-child {
+   float: left;
+   padding-right: 10px;
+}
