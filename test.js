@@ -55,7 +55,15 @@ describe('Create COMMENTS', function(){
    it('Return a 201 create status', function(done){
       request(app)
       .post('/comments')
+      .send('title=FromPost&body=A+message+from+the+test+create')   // form data is url encoded
       .expect(201, done);
    });
+
+   it('Return the post comment title', function(done) {
+      request(app)
+      .post('/comments')
+      .send('title=FromPost&body=A+message+from+the+test+create')   // form data is url encoded
+      .expect(/FromPost/i, done);
+   })
 });
 

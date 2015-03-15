@@ -59,8 +59,20 @@ input[type="submit"] {
    width: auto;
 }
 
-/* Block List */
+/* Lists */
+ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+ul li {
+   margin-bottom: 10px;
+}
+ul li:last-child {
+   margin-bottom: 0;
+}
 
+/* Block List 
 .comment-list li::after {
    clear: both;
    content: '';
@@ -69,4 +81,4 @@ input[type="submit"] {
 .comment-list li a:last-child {
    float: left;
    padding-right: 10px;
-}
+}*/
