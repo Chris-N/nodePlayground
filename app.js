@@ -22,7 +22,7 @@ client.hset('comments', 'Three', 'body stuff');
 var commentPath = '/comments';
 
 app.get(commentPath , function(request, response){
-   client.hkeys('comments', function(error, titles) {
+   client.hgetall('comments', function(error, titles) {
       if(error) throw error;
 
       response.json(titles);
