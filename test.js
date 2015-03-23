@@ -1,6 +1,9 @@
 var request = require('supertest');
 var app = require('./app');
 
+var redis = require('redis');
+var client = redis.createClient();
+
 console.log('------------------------------' + new Date());
 describe('Requests to the ROOT path', function(){
 
@@ -64,6 +67,32 @@ describe('Create COMMENTS', function(){
       .post('/comments')
       .send('title=FromPost&body=A+message+from+the+test+create')   // form data is url encoded
       .expect(/FromPost/i, done);
-   })
+   });
+
+   it('Validates title and description', function(done) {
+
+      request(app)
+      .post('/comments')
+      .send('title=&description=')
+      .expect(400, done);
+   });
+});
+
+describe('Deleting comments', function(){
+
+   before(function(){ client.hset('comments', 'Banana', 'a tasty fruit'); });
+   //after(function() { client.flushdb(); });
+
+   // 204 = no content
+   it('Returns a 204 status code', function(done){
+
+     request(app)
+      .delete('/comments/Banana')
+      .expect(204, done);
+      //.end(function(error){
+      //   if(error) throw error;
+      //   done();
+      //});
+   });
 });
 

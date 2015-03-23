@@ -38,7 +38,12 @@ app.post(commentPath , urlencode, function(request, response){
       response.status(201).json(obj);
    });
 });
-
+app.delete(commentPath + '/:name', function(request, response) {
+   client.hdel('comments', request.params.name, function(error){
+      if(error) throw error;
+      response.sendStatus(204);
+   });
+});
 
 // This line will bind our app to the network
 //app.listen(3000);
