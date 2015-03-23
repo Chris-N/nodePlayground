@@ -73,7 +73,7 @@ describe('Create COMMENTS', function(){
 
       request(app)
       .post('/comments')
-      .send('title=&description=')
+      .send('title=&body=')
       .expect(400, done);
    });
 });

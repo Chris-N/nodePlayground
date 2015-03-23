@@ -30,6 +30,11 @@ app.get(commentPath , function(request, response){
 });
 app.post(commentPath , urlencode, function(request, response){
    var newComment = request.body;
+   if(!newComment.title || !newComment.body){
+      response.sendStatus(400);
+      return false;
+   }
+      
    client.hset('comments', newComment.title, newComment.body, function(error) {
       if(error) throw error;
 
